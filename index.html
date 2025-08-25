@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <title>Cash Book</title>
+	<link rel="stylesheet" href="Google Sheet.css">
+</head>
+<body>
+	<div class="container">
+		<form method="post" action="" name="submit-to-google-sheet">
+			<h4>CASH BOOK</h4>
+			<input type="date" name="Date" placeholder="Date" required>
+                        <label for="banks">Choose you are dealing with :</label>
+                            <select name="Bank" id="transactions" required>
+                               <option value="Cash">Cash</option>
+                               <option value="Fab">Fab</option>
+                               <option value="Dubai First">Dubai First</option>
+                               <option value="SCB">SCB</option>
+                               <option value="RAK">RAK</option>
+                            </select></br>
+			<label for="vouchers">Choose a voucher :</label>
+                            <select name="Voucher" id="vouchers" required>
+                               <option value="Payment">Payment</option>
+                               <option value="Receipt">Receipt</option>
+                            </select>
+                        <textarea name="Name" rows="7" placeholder="Name of the Party" required></textarea>
+			<input type="number" name="Amount" placeholder="Amount" required>
+			<input type="submit" value="Submit" id="submit"><br>
+                        <span id="success"></span>
+		</form>
+              
+ <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbz5feMIuzKf2ZkFSwbs602BQNejNWCKK5UjIp070fBQf6hr2NAcoPBVMh1AtzQW0c_H/exec'
+  const form = document.forms['submit-to-google-sheet']
+  const success = document.getElementById('success')
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => {
+       success.innerHTML="Entry Successfully submitted to Cash Book";
+      })
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+	</div>
+</body>
+
+</html>
