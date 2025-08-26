@@ -18,6 +18,11 @@ body{
 	border-radius: 10px;
 	background-color: #228B22;
 }
+h1{
+	margin-bottom: 10px;
+	font-size: 24px;
+	color: white;
+}
 h4{
 	margin-bottom: 10px;
 	font-size: 24px;
@@ -42,4 +47,5 @@ textarea{
 }
 #submit:hover{
 	background-color: #330000;
+
 }
